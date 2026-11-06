@@ -95,6 +95,7 @@ jobs:
         run: packaging/macos/package.sh --arch universal
       - uses: actions/upload-artifact@v4
         with:
+          retention-days: 7
           name: release-macos
           path: dist/release/*
           if-no-files-found: error
@@ -149,6 +150,7 @@ jobs:
         run: ./packaging/windows/package.ps1 -Arch ${{ matrix.arch }}
       - uses: actions/upload-artifact@v4
         with:
+          retention-days: 7
           name: release-windows-${{ matrix.arch }}
           path: dist/release/*
           if-no-files-found: error
@@ -208,6 +210,7 @@ jobs:
           done
       - uses: actions/upload-artifact@v4
         with:
+          retention-days: 7
           name: release-linux-${{ matrix.arch }}
           path: dist/release/*
           if-no-files-found: error
@@ -246,6 +249,7 @@ jobs:
         run: packaging/linux/flatpak-bundle.sh "dist/linux/soundcraft-$SOUNDCRAFT_VERSION-linux-${{ matrix.arch }}.tar.gz"
       - uses: actions/upload-artifact@v4
         with:
+          retention-days: 7
           name: release-flatpak-${{ matrix.arch }}
           path: dist/release/*.flatpak
           if-no-files-found: error
@@ -288,6 +292,7 @@ jobs:
             bash packaging/freebsd/package.sh
       - uses: actions/upload-artifact@v4
         with:
+          retention-days: 7
           name: release-freebsd
           path: dist/release/*
           if-no-files-found: error
@@ -321,6 +326,7 @@ jobs:
         run: packaging/web/package.sh
       - uses: actions/upload-artifact@v4
         with:
+          retention-days: 7
           name: release-web
           path: dist/release/*
           if-no-files-found: error
